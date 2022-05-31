@@ -24,7 +24,6 @@ const History = () => {
     const fetchHistory = async () => {
         try {
             const {data} = await axios.get(`/play/match/history/${id}`)
-            console.log(data)
             setHistoryList(data)
         } catch (e) {
             setHistoryList(null)

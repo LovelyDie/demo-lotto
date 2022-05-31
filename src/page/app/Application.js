@@ -1,10 +1,12 @@
 import MainLayout from '../../layout/MainLayout'
 import { axios } from '../../config/AxiosConfig'
-import { Button } from '@material-ui/core'
+import { Button, Card } from '@material-ui/core'
 import { getIdFromCookie } from '../../helper/AuthUtil'
+import { useState } from 'react'
 
 const Application = () => {
     const id = getIdFromCookie()
+    const [result, setResult] = useState(null)
 
     const onClickChoose = async (value) => {
         try {
@@ -13,7 +15,7 @@ const Application = () => {
                 playerOne: {...user.data},
                 playerOneChoice: value
             })
-            console.log(data)
+            setResult(data)
         } catch (e) {
 
         }
@@ -21,10 +23,22 @@ const Application = () => {
 
     return (
         <MainLayout>
-            <div>
-                
+            <Card variant="outlined">
+                PLAYER TWO CHOOSE : {result && result.playerTwoChoice}
+            </Card>
+            <div className={`text-center ${result ? 'text-success' : 'text-danger'} my-3`} style={{fontSize: '50px'}}>
+                {result ? `RESULT : ${result.result}` : 'VS'}
             </div>
-            <Button variant="outlined" onClick={onClickChoose}>TEST</Button>
+            <Card variant="outlined">
+                PLAYER TWO CHOOSE : {result && result.playerOneChoice}
+            </Card>
+            <Card variant="outlined">
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <Button variant="outlined" onClick={() => onClickChoose('ROCK')}>ROCK</Button>
+                    <Button variant="outlined" onClick={() => onClickChoose('PAPER')}>PAPER</Button>
+                    <Button variant="outlined" onClick={() => onClickChoose('SCISSORS')}>SCISSORS</Button>
+                </div>
+            </Card>
         </MainLayout>
     )
 }
