@@ -3,7 +3,7 @@ import { Button, TextField } from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import { saveTokenToCookie } from '../../helper/AuthUtil'
+import { saveUserToCookie } from '../../helper/AuthUtil'
 import { axios } from '../../config/AxiosConfig'
 
 const Login = (props) => {
@@ -23,8 +23,7 @@ const Login = (props) => {
                 name: value.username,
                 password: value.password
             })
-            console.log(data)
-            saveTokenToCookie('TOKEN')
+            saveUserToCookie(data.id, data.name, data.token)
             navigate('/application')
         } catch (e) {
             //handle in interceptor

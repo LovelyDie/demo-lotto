@@ -21,7 +21,6 @@ const Register = () => {
                 name: value.username,
                 password: value.password
             })
-            console.log(data)
             navigate('/login')
         } catch (e) {
             //handle in interceptor

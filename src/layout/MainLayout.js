@@ -2,7 +2,7 @@ import { withStyles } from '@material-ui/core/styles'
 import MenuIcon from '@mui/icons-material/Menu'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ErrorIcon from '@mui/icons-material/Error'
-import HomeIcon from '@mui/icons-material/Home'
+import HistoryIcon from '@mui/icons-material/History'
 import CasinoIcon from '@mui/icons-material/Casino'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useEffect, useState } from 'react'
@@ -22,7 +22,7 @@ import {
     Typography
 } from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
-import { getTokenFromCookie } from '../helper/AuthUtil'
+import { deleteUserFromCookie, getTokenFromCookie } from '../helper/AuthUtil'
 
 const drawerWidth = 240
 
@@ -110,7 +110,7 @@ const MainLayout = ({children, classes}) => {
 
     const handleLogout = async () => {
         try {
-            console.log('LOGOUT')
+            deleteUserFromCookie()
             navigate('/login')
         } catch (e) {
             // handle in interceptor
@@ -172,15 +172,15 @@ const MainLayout = ({children, classes}) => {
                 <List>
                     <ListItem button onClick={() => navigate('/application')}>
                         <ListItemIcon>
-                            <HomeIcon/>
+                            <CasinoIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="Application Page"/>
+                        <ListItemText primary="Application"/>
                     </ListItem>
                     <ListItem button onClick={() => navigate('/history')}>
                         <ListItemIcon>
-                            <CasinoIcon/>
+                            <HistoryIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="App Page"/>
+                        <ListItemText primary="History"/>
                     </ListItem>
                 </List>
                 <Divider/>
@@ -204,7 +204,7 @@ const MainLayout = ({children, classes}) => {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
-                <div>
+                <div style={{display: 'block'}} className="px-5">
                     {children}
                 </div>
             </main>
