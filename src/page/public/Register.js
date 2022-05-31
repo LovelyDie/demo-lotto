@@ -3,6 +3,7 @@ import { Button, TextField } from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
+import { axios } from '../../config/AxiosConfig'
 
 const Register = () => {
     const navigate = useNavigate()
@@ -16,9 +17,12 @@ const Register = () => {
 
     const onClickRegister = async (value) => {
         try {
-            console.log('Register')
-            console.log(value)
-            navigate('login')
+            const {data} = await axios.post('/public/register', {
+                name: value.username,
+                password: value.password
+            })
+            console.log(data)
+            navigate('/login')
         } catch (e) {
             //handle in interceptor
         }
@@ -40,7 +44,7 @@ const Register = () => {
                           handleChange
                       }) => (
                         <Form onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}>
-                            <h1>LOGIN</h1>
+                            <h1>REGISTER</h1>
                             <TextField
                                 name="username"
                                 placeholder="Enter Username"

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import { saveTokenToCookie } from '../../helper/AuthUtil'
+import { axios } from '../../config/AxiosConfig'
 
 const Login = (props) => {
     const navigate = useNavigate()
@@ -18,8 +19,11 @@ const Login = (props) => {
 
     const onClickLogin = async (value) => {
         try {
-            console.log(value)
-            console.log('Login')
+            const {data} = await axios.post('/identity/login', {
+                name: value.username,
+                password: value.password
+            })
+            console.log(data)
             saveTokenToCookie('TOKEN')
             navigate('/application')
         } catch (e) {

@@ -1,6 +1,7 @@
 import MainLayout from '../../layout/MainLayout'
 
 const Application = () => {
+
     return (
         <MainLayout>
             Hello

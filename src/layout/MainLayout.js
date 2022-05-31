@@ -5,7 +5,7 @@ import ErrorIcon from '@mui/icons-material/Error'
 import HomeIcon from '@mui/icons-material/Home'
 import CasinoIcon from '@mui/icons-material/Casino'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import {
@@ -22,6 +22,7 @@ import {
     Typography
 } from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
+import { getTokenFromCookie } from '../helper/AuthUtil'
 
 const drawerWidth = 240
 
@@ -96,9 +97,16 @@ const styles = theme => ({
     },
 })
 
-const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
+const MainLayout = ({children, classes}) => {
     const navigate = useNavigate()
+    const auth = getTokenFromCookie()
     const [openDrawer, setOpenDrawer] = useState(false)
+
+    useEffect(() => {
+        if (!auth) {
+            navigate('/login')
+        }
+    }, [])
 
     const handleLogout = async () => {
         try {
