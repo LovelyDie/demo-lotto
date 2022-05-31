@@ -1,8 +1,10 @@
+import MainLayout from '../../layout/MainLayout'
+
 const Application = () => {
     return (
-        <div>
+        <MainLayout>
             Application
-        </div>
+        </MainLayout>
     )
 }
 export default Application

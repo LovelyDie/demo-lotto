@@ -152,13 +152,13 @@ const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
                 </div>
                 <Divider/>
                 <List>
-                    <ListItem button onClick={() => history('/app/home')}>
+                    <ListItem button onClick={() => history('/home')}>
                         <ListItemIcon>
                             <HomeIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Home Page"/>
                     </ListItem>
-                    <ListItem button onClick={() => history('/app/application')}>
+                    <ListItem button onClick={() => history('/application')}>
                         <ListItemIcon>
                             <CasinoIcon/>
                         </ListItemIcon>
@@ -177,7 +177,9 @@ const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
-                {children}
+                <div>
+                    {children}
+                </div>
             </main>
         </div>
     )
