@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import HttpNotFound from './page/error/HttpNotFound'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const ViewPage = lazy(() => import('./page'))
+const ViewApp = lazy(() => import('./page/app'))
+
+const App = (props) => {
+    const theme = createTheme({
+        palette: {
+            type: 'dark'
+        }
+    })
+
+    return (
+        <Suspense fallback={<div className="loading"/>}>
+            <ThemeProvider theme={theme}>
+                <Router>
+                    <Routes>
+                        <Route path="*" element={<HttpNotFound {...props} />}/>
+                        <Route exact path="" element={<ViewPage {...props} />}/>
+                        <Route exact path="app/*" element={<ViewApp {...props} />}/>
+                    </Routes>
+                </Router>
+            </ThemeProvider>
+        </Suspense>
+    )
 }
 
-export default App;
+export default App
