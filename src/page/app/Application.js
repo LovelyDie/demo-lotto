@@ -3,7 +3,7 @@ import MainLayout from '../../layout/MainLayout'
 const Application = () => {
     return (
         <MainLayout>
-            Application
+            Hello
         </MainLayout>
     )
 }

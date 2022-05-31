@@ -125,7 +125,7 @@ const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
                         color="inherit"
                         noWrap
                     >
-                        Home
+                        ONE NIGHT DAY APPLICATION DEMO
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -152,13 +152,13 @@ const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
                 </div>
                 <Divider/>
                 <List>
-                    <ListItem button onClick={() => history('/home')}>
+                    <ListItem button onClick={() => history('/application')}>
                         <ListItemIcon>
                             <HomeIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="Home Page"/>
+                        <ListItemText primary="Application Page"/>
                     </ListItem>
-                    <ListItem button onClick={() => history('/application')}>
+                    <ListItem button onClick={() => history('/history')}>
                         <ListItemIcon>
                             <CasinoIcon/>
                         </ListItemIcon>

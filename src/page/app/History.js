@@ -1,10 +1,10 @@
 import MainLayout from '../../layout/MainLayout'
 
-const Home = () => {
+const History = () => {
     return (
         <MainLayout>
-            Hello
+            Application
         </MainLayout>
     )
 }
-export default Home
+export default History

@@ -16,10 +16,9 @@ const PublicLayout = ({children}) => {
             <CssBaseline/>
             <Card
                 style={{
-                    height: '50%',
                     width: '50%',
                     position: 'absolute',
-                    top: '25%',
+                    top: '20%',
                     left: '25%',
                 }}
             >

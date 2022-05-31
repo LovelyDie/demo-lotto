@@ -4,10 +4,11 @@ import HttpNotFound from './page/error/HttpNotFound'
 import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 
 const ViewPage = lazy(() => import('./page'))
-const ViewHome = lazy(() => import('./page/app/Home'))
 const ViewApp = lazy(() => import('./page/app/Application'))
+const ViewHistory = lazy(() => import('./page/app/History'))
 
 const ViewLogin = lazy(() => import('./page/public/Login'))
+const ViewRegister = lazy(() => import('./page/public/Register'))
 
 const App = (props) => {
     const theme = createTheme({
@@ -24,8 +25,9 @@ const App = (props) => {
                         <Route path="*" element={<HttpNotFound {...props} />}/>
                         <Route exact path="" element={<ViewPage {...props} />}/>
                         <Route exact path="login" element={<ViewLogin {...props} />}/>
-                        <Route exact path="home" element={<ViewHome {...props}/>}/>
+                        <Route exact path="register" element={<ViewRegister {...props} />}/>
                         <Route exact path="application" element={<ViewApp {...props}/>}/>
+                        <Route exact path="history" element={<ViewHistory {...props}/>}/>
                     </Routes>
                 </Router>
             </ThemeProvider>

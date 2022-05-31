@@ -28,7 +28,7 @@ const HttpNotFound = () => {
                     หน้าที่คุณกำลังมองหาอาจถูกลบ เปลี่ยนชื่อ หรือไม่สามารถเข้าถึงได้ชั่วคราว
                 </pre>
                 <Button
-                    onClick={() => history('/home')}
+                    onClick={() => history('/application')}
                     variant="contained"
                     color="primary"
                 >
