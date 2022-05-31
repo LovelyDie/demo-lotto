@@ -1,15 +1,26 @@
 import axios from 'axios'
+import { getTokenFromCookie } from '../helper/AuthUtil'
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 axios.interceptors.request.use(
     async config => {
-        return config
+        return handleRequest(config)
     },
     error => {
         return Promise.reject(error)
     }
 )
+
+const handleRequest = (config) => {
+    const auth = getTokenFromCookie()
+    if (auth) {
+        config.headers = {
+            'Authorization': auth
+        }
+    }
+    return config
+}
 
 axios.interceptors.response.use(
     response => {

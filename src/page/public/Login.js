@@ -3,6 +3,7 @@ import { Button, TextField } from '@material-ui/core'
 import { useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
+import { saveTokenToCookie } from '../../helper/AuthUtil'
 
 const Login = (props) => {
     const navigate = useNavigate()
@@ -19,6 +20,7 @@ const Login = (props) => {
         try {
             console.log(value)
             console.log('Login')
+            saveTokenToCookie('TOKEN')
             navigate('/application')
         } catch (e) {
             //handle in interceptor

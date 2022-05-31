@@ -4,6 +4,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ErrorIcon from '@mui/icons-material/Error'
 import HomeIcon from '@mui/icons-material/Home'
 import CasinoIcon from '@mui/icons-material/Casino'
+import LogoutIcon from '@mui/icons-material/Logout'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -96,8 +97,17 @@ const styles = theme => ({
 })
 
 const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
-    const history = useNavigate()
+    const navigate = useNavigate()
     const [openDrawer, setOpenDrawer] = useState(false)
+
+    const handleLogout = async () => {
+        try {
+            console.log('LOGOUT')
+            navigate('/login')
+        } catch (e) {
+            // handle in interceptor
+        }
+    }
 
     return (
         <div className={classes.root}>
@@ -125,7 +135,7 @@ const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
                         color="inherit"
                         noWrap
                     >
-                        ONE NIGHT DAY APPLICATION DEMO
+                        ONE NIGHT APPLICATION DEMO
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -152,13 +162,13 @@ const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
                 </div>
                 <Divider/>
                 <List>
-                    <ListItem button onClick={() => history('/application')}>
+                    <ListItem button onClick={() => navigate('/application')}>
                         <ListItemIcon>
                             <HomeIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Application Page"/>
                     </ListItem>
-                    <ListItem button onClick={() => history('/history')}>
+                    <ListItem button onClick={() => navigate('/history')}>
                         <ListItemIcon>
                             <CasinoIcon/>
                         </ListItemIcon>
@@ -167,11 +177,20 @@ const MainLayout = ({children, classes, setDarkMode, darkMode}) => {
                 </List>
                 <Divider/>
                 <List>
-                    <ListItem button onClick={() => history('/error')}>
+                    <ListItem button onClick={() => navigate('/error')}>
                         <ListItemIcon>
                             <ErrorIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Error Page"/>
+                    </ListItem>
+                </List>
+                <Divider/>
+                <List>
+                    <ListItem button onClick={handleLogout}>
+                        <ListItemIcon>
+                            <LogoutIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Logout"/>
                     </ListItem>
                 </List>
             </Drawer>
