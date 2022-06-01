@@ -17,7 +17,7 @@ const Register = () => {
 
     const onClickRegister = async (value) => {
         try {
-            const {data} = await axios.post('/public/register', {
+            await axios.post('/public/register', {
                 name: value.username,
                 password: value.password
             })

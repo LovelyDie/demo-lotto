@@ -1,7 +1,7 @@
 import MainLayout from '../../layout/MainLayout'
 import { axios } from '../../config/AxiosConfig'
 import { Button, Card } from '@material-ui/core'
-import { getIdFromCookie } from '../../helper/AuthUtil'
+import { getIdFromCookie, getNameFromCookie } from '../../helper/AuthUtil'
 import { useState } from 'react'
 import Paper from '../../asset/img/paper.png'
 import Rock from '../../asset/img/rock.png'
@@ -9,6 +9,7 @@ import Scissors from '../../asset/img/scissors.png'
 
 const Application = () => {
     const id = getIdFromCookie()
+    const name = getNameFromCookie()
     const [result, setResult] = useState(null)
 
     const mapButtonImage = (value) => {
@@ -25,14 +26,16 @@ const Application = () => {
 
     const onClickChoose = async (value) => {
         try {
-            const user = await axios.get(`/play/player/${id}`)
             const {data} = await axios.post('/play/single', {
-                playerOne: {...user.data},
+                playerOne: {
+                    id: id,
+                    name: name
+                },
                 playerOneChoice: value
             })
             setResult(data)
         } catch (e) {
-
+            //handle in interceptor
         }
     }
 

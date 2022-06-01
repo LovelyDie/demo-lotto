@@ -21,16 +21,16 @@ const History = () => {
     const [historyList, setHistoryList] = useState(null)
 
     useEffect(() => {
-        fetchHistory()
+        id && fetchHistory()
     }, [])
 
     const mapImage = (value) => {
         if (value === 'ROCK') {
-            return <img width={100} src={Rock}/>
+            return <img width={100} src={Rock} alt="Rock"/>
         } else if (value === 'PAPER') {
-            return <img width={100} src={PaperImg}/>
+            return <img width={100} src={PaperImg} alt="Paper"/>
         } else if (value === 'SCISSORS') {
-            return <img width={100} src={Scissors}/>
+            return <img width={100} src={Scissors} alt="Scissors"/>
         } else {
             return
         }
@@ -69,7 +69,7 @@ const History = () => {
                                         PLAYER ONE
                                     </Typography>
                                     <Typography sx={{mb: 1.5}} color="textSecondary">
-                                        Name : {value.playerOne.name}
+                                        Name : {value.playerOne.name || ''}
                                         <br/>
                                         {mapImage(value.playerOneChoice)}
                                     </Typography>
@@ -79,7 +79,7 @@ const History = () => {
                                         PLAYER Two
                                     </Typography>
                                     <Typography sx={{mb: 1.5}} color="textSecondary">
-                                        Name : {value.playerTwo.name}
+                                        Name : {value.playerTwo.name || ''}
                                         <br/>
                                         {mapImage(value.playerTwoChoice)}
                                     </Typography>
