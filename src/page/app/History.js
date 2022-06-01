@@ -6,6 +6,7 @@ import { Card, CardContent, Grid, Paper, styled, Typography } from '@material-ui
 import Rock from '../../asset/img/rock.png'
 import Scissors from '../../asset/img/scissors.png'
 import PaperImg from '../../asset/img/paper.png'
+import NoChoice from '../../asset/img/noChoice.png'
 
 const Item = styled(Paper)(({theme}) => ({
     backgroundColor: '#1A2027',
@@ -32,7 +33,7 @@ const History = () => {
         } else if (value === 'SCISSORS') {
             return <img width={100} src={Scissors} alt="Scissors"/>
         } else {
-            return
+            return <img src={NoChoice} alt="No Choice" width={100}/>
         }
     }
 
@@ -57,7 +58,7 @@ const History = () => {
                                 MATCH #{value.id}
                             </Typography>
                             <Typography variant="h5" className="text-success mb-2" component="div">
-                                RESULT : {value.result}
+                                RESULT : {value.result || 'No Result Yet'}
                             </Typography>
                             <Grid
                                 container
@@ -78,8 +79,12 @@ const History = () => {
                                     <Typography color="textPrimary">
                                         PLAYER Two
                                     </Typography>
-                                    <Typography sx={{mb: 1.5}} color="textSecondary">
-                                        Name : {value.playerTwo.name || ''}
+                                    <Typography
+                                        sx={{mb: 1.5}}
+                                        color="textSecondary"
+                                        className={!value.playerTwo && 'text-danger'}
+                                    >
+                                        Name : {value.playerTwo ? value.playerTwo.name : 'No Player Yet'}
                                         <br/>
                                         {mapImage(value.playerTwoChoice)}
                                     </Typography>

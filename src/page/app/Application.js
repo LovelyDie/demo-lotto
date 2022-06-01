@@ -1,29 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainLayout from '../../layout/MainLayout'
 import { axios } from '../../config/AxiosConfig'
 import { Button, Card } from '@material-ui/core'
-import { getIdFromCookie, getNameFromCookie } from '../../helper/AuthUtil'
-import { useState } from 'react'
 import Paper from '../../asset/img/paper.png'
 import Rock from '../../asset/img/rock.png'
 import Scissors from '../../asset/img/scissors.png'
+import { getIdFromCookie, getNameFromCookie } from '../../helper/AuthUtil'
+import { mapButtonImage } from '../../helper/Util'
 
 const Application = () => {
     const id = getIdFromCookie()
     const name = getNameFromCookie()
     const [result, setResult] = useState(null)
-
-    const mapButtonImage = (value) => {
-        if (value === 'ROCK') {
-            return <img width={200} src={Rock}/>
-        } else if (value === 'PAPER') {
-            return <img width={200} src={Paper}/>
-        } else if (value === 'SCISSORS') {
-            return <img width={200} src={Scissors}/>
-        } else {
-            return
-        }
-    }
 
     const onClickChoose = async (value) => {
         try {
