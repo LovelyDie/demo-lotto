@@ -3,6 +3,9 @@ import { axios } from '../../config/AxiosConfig'
 import { getIdFromCookie } from '../../helper/AuthUtil'
 import { useEffect, useState } from 'react'
 import { Card, CardContent, Grid, Paper, styled, Typography } from '@material-ui/core'
+import Rock from '../../asset/img/rock.png'
+import Scissors from '../../asset/img/scissors.png'
+import PaperImg from '../../asset/img/paper.png'
 
 const Item = styled(Paper)(({theme}) => ({
     backgroundColor: '#1A2027',
@@ -20,6 +23,18 @@ const History = () => {
     useEffect(() => {
         fetchHistory()
     }, [])
+
+    const mapImage = (value) => {
+        if (value === 'ROCK') {
+            return <img width={100} src={Rock}/>
+        } else if (value === 'PAPER') {
+            return <img width={100} src={PaperImg}/>
+        } else if (value === 'SCISSORS') {
+            return <img width={100} src={Scissors}/>
+        } else {
+            return
+        }
+    }
 
     const fetchHistory = async () => {
         try {
@@ -56,7 +71,7 @@ const History = () => {
                                     <Typography sx={{mb: 1.5}} color="textSecondary">
                                         Name : {value.playerOne.name}
                                         <br/>
-                                        Choose : {value.playerOneChoice}
+                                        {mapImage(value.playerOneChoice)}
                                     </Typography>
                                 </Item>
                                 <Item>
@@ -66,7 +81,7 @@ const History = () => {
                                     <Typography sx={{mb: 1.5}} color="textSecondary">
                                         Name : {value.playerTwo.name}
                                         <br/>
-                                        Choose : {value.playerTwoChoice}
+                                        {mapImage(value.playerTwoChoice)}
                                     </Typography>
                                 </Item>
                             </Grid>
