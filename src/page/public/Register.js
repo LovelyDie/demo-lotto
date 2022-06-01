@@ -13,7 +13,6 @@ const Register = () => {
             .required('Please enter your username'),
         password: Yup.string()
             .required('Please enter your password')
-            .min(8, 'minimum length is 8 characters')
     })
 
     const onClickRegister = async (value) => {
