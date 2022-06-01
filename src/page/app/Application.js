@@ -11,6 +11,18 @@ const Application = () => {
     const id = getIdFromCookie()
     const [result, setResult] = useState(null)
 
+    const mapButtonImage = (value) => {
+        if (value === 'ROCK') {
+            return <img width={200} src={Rock}/>
+        } else if (value === 'PAPER') {
+            return <img width={200} src={Paper}/>
+        } else if (value === 'SCISSORS') {
+            return <img width={200} src={Scissors}/>
+        } else {
+            return
+        }
+    }
+
     const onClickChoose = async (value) => {
         try {
             const user = await axios.get(`/play/player/${id}`)
@@ -27,13 +39,15 @@ const Application = () => {
     return (
         <MainLayout>
             <Card variant="outlined" style={{fontSize: '25px'}}>
-                <p className="ml-3">PLAYER TWO CHOOSE : {result && result.playerTwoChoice}</p>
+                <p className="ml-3">PLAYER TWO CHOOSE :</p>
+                <div className="text-center">{result && mapButtonImage(result.playerTwoChoice)}</div>
             </Card>
             <div className={`text-center ${result ? 'text-success' : 'text-danger'} my-3`} style={{fontSize: '50px'}}>
                 {result ? `RESULT : ${result.result}` : 'VS'}
             </div>
             <Card variant="outlined" style={{fontSize: '25px'}}>
-                <p className="ml-3">PLAYER TWO CHOOSE : {result && result.playerOneChoice}</p>
+                <div className="text-center">{result && mapButtonImage(result.playerOneChoice)}</div>
+                <p className="ml-3">PLAYER ONE CHOOSE :</p>
             </Card>
             <Card variant="outlined">
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
