@@ -23,20 +23,37 @@ const Application = () => {
 
     return (
         <MainLayout>
-            <Card variant="outlined">
-                PLAYER TWO CHOOSE : {result && result.playerTwoChoice}
+            <Card variant="outlined" style={{fontSize: '25px'}}>
+                <p className="ml-3">PLAYER TWO CHOOSE : {result && result.playerTwoChoice}</p>
             </Card>
             <div className={`text-center ${result ? 'text-success' : 'text-danger'} my-3`} style={{fontSize: '50px'}}>
                 {result ? `RESULT : ${result.result}` : 'VS'}
             </div>
-            <Card variant="outlined">
-                PLAYER TWO CHOOSE : {result && result.playerOneChoice}
+            <Card variant="outlined" style={{fontSize: '25px'}}>
+                <p className="ml-3">PLAYER TWO CHOOSE : {result && result.playerOneChoice}</p>
             </Card>
             <Card variant="outlined">
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                    <Button variant="outlined" onClick={() => onClickChoose('ROCK')}>ROCK</Button>
-                    <Button variant="outlined" onClick={() => onClickChoose('PAPER')}>PAPER</Button>
-                    <Button variant="outlined" onClick={() => onClickChoose('SCISSORS')}>SCISSORS</Button>
+                    <Button
+                        variant="outlined"
+                        size="large"
+                        onClick={() => onClickChoose('ROCK')}
+                    >
+                        ROCK
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        size="large"
+                        onClick={() => onClickChoose('PAPER')}
+                    >
+                        PAPER
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        onClick={() => onClickChoose('SCISSORS')}
+                    >
+                        SCISSORS
+                    </Button>
                 </div>
             </Card>
         </MainLayout>
