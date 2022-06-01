@@ -3,6 +3,9 @@ import { axios } from '../../config/AxiosConfig'
 import { Button, Card } from '@material-ui/core'
 import { getIdFromCookie } from '../../helper/AuthUtil'
 import { useState } from 'react'
+import Paper from '../../asset/img/paper.png'
+import Rock from '../../asset/img/rock.png'
+import Scissors from '../../asset/img/scissors.png'
 
 const Application = () => {
     const id = getIdFromCookie()
@@ -39,20 +42,20 @@ const Application = () => {
                         size="large"
                         onClick={() => onClickChoose('ROCK')}
                     >
-                        ROCK
+                        <img src={Rock} style={{width: '200px'}}/>
                     </Button>
                     <Button
                         variant="outlined"
                         size="large"
                         onClick={() => onClickChoose('PAPER')}
                     >
-                        PAPER
+                        <img src={Paper} style={{width: '200px'}}/>
                     </Button>
                     <Button
                         variant="outlined"
                         onClick={() => onClickChoose('SCISSORS')}
                     >
-                        SCISSORS
+                        <img src={Scissors} style={{width: '200px'}}/>
                     </Button>
                 </div>
             </Card>
