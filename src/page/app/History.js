@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from 'react'
 import MainLayout from '../../layout/MainLayout'
 import { axios } from '../../config/AxiosConfig'
 import { getIdFromCookie } from '../../helper/AuthUtil'
-import { useEffect, useState } from 'react'
 import { Card, CardContent, Grid, Paper, styled, Typography } from '@material-ui/core'
 import Rock from '../../asset/img/rock.png'
 import Scissors from '../../asset/img/scissors.png'

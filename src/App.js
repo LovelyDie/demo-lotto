@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 
 const ViewPage = lazy(() => import('./page'))
 const ViewApp = lazy(() => import('./page/app/Application'))
+const ViewMulti = lazy(() => import('./page/app/Multiplayer'))
 const ViewHistory = lazy(() => import('./page/app/History'))
 
 const ViewLogin = lazy(() => import('./page/public/Login'))
@@ -25,6 +26,7 @@ const App = (props) => {
                         <Route path="*" element={<HttpNotFound {...props} />}/>
                         <Route exact path="/" element={<ViewPage {...props}/>}/>
                         <Route exact path="/application" element={<ViewApp {...props}/>}/>
+                        <Route exact path="/multiplayer" element={<ViewMulti {...props}/>}/>
                         <Route exact path="/history" element={<ViewHistory {...props}/>}/>
                         <Route exact path="/login" element={<ViewLogin {...props} />}/>
                         <Route exact path="/register" element={<ViewRegister {...props} />}/>

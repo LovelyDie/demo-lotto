@@ -1,9 +1,11 @@
+import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import MenuIcon from '@mui/icons-material/Menu'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ErrorIcon from '@mui/icons-material/Error'
 import HistoryIcon from '@mui/icons-material/History'
 import CasinoIcon from '@mui/icons-material/Casino'
+import MultipleStopIcon from '@mui/icons-material/MultipleStop'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
@@ -173,6 +175,12 @@ const MainLayout = ({children, classes}) => {
                     <ListItem button onClick={() => navigate('/application')}>
                         <ListItemIcon>
                             <CasinoIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Application"/>
+                    </ListItem>
+                    <ListItem button onClick={() => navigate('/multiplayer')}>
+                        <ListItemIcon>
+                            <MultipleStopIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Application"/>
                     </ListItem>
