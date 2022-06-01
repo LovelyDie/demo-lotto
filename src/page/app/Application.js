@@ -40,7 +40,7 @@ const Application = () => {
         <MainLayout>
             <Card variant="outlined" style={{fontSize: '25px'}}>
                 <p className="ml-3">PLAYER TWO CHOOSE :</p>
-                <div className="text-center">{result && mapButtonImage(result.playerTwoChoice)}</div>
+                <div className="text-center rotateimg180">{result && mapButtonImage(result.playerTwoChoice)}</div>
             </Card>
             <div className={`text-center ${result ? 'text-success' : 'text-danger'} my-3`} style={{fontSize: '50px'}}>
                 {result ? `RESULT : ${result.result}` : 'VS'}
